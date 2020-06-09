@@ -1,5 +1,5 @@
 
-{% extends "layouts/main" %}
+{% extends "_layouts/main" %}
 
 {% block main %}
 
@@ -9,7 +9,6 @@
         <h2 class="logo"><span class="scripty">Crafty</span> Coffee</h2>
         <p class="tagline reverse">{{entry.subtitle}} </p>
         <p><a class="button radius" href="drinks/index.html">See Our Drinks</a> <a class="button radius" href="recipes/index.html">Make Our Drinks</a>
-
     </div>
 </div>
 <br>
@@ -19,9 +18,9 @@
         <div class="large-12 small-12 columns">
             {% for drink in craft.entries.section('drinks').limit(5).all() %}
                 <a href="{{drink.url}}">
-            <div class="row hp-brew-item" style="background-image:url({{ drink.drinkImage.one().getUrl() }});">
+            <div class="row hp-brew-item" style="background-image:url({{ drink.drinkImage.one().url() }});">
                 <!-- Photo by Nathan Dumlao on Unsplash -->
-                <p class="reverse">{{drink.title}}</p>
+                <p class="reverse" style='color:black;'>{{drink.title}}</p>
             </div>
             </a>
             <br>
@@ -32,7 +31,7 @@
         <h3>Latest Coffee News</h3>
         <ul class="news-listing">
         {% for new in craft.entries.section('news').limit(10).all() %}
-             <li><a href="{{new.url}}">{{new.newsExcerpt}}</a></li>
+             <li><a href="{{new.url}}">{{new.title}}</a></li>
         {% endfor %}
            
             

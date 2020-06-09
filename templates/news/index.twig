@@ -1,0 +1,20 @@
+{% extends "_layouts/main" %}
+
+{% block main %}
+{% for new in craft.entries.section('news').limit(25).all() %}
+    <div class="row">
+    <div class="large-12 small-12 columns">
+        <div class="intro large-12 small-12 columns text-center">
+            <hr>
+        </div>
+
+        <h1><a href="{{new.url}}">{{new.title}}</a></h1>
+        <p class="byline">by {{new.nameAuthor}} on {{new.postDate | date('M d Y')}}</p>
+        <p>{{new.newsBody}}</p>
+    </div>
+</div>
+{% endfor %}
+
+
+
+{% endblock %}
